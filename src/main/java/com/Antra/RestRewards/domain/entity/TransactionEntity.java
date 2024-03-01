@@ -1,4 +1,4 @@
-package com.Antra.RestRewards.entity;
+package com.Antra.RestRewards.domain.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +26,7 @@ public class TransactionEntity {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
+//  TODO: Change this to userEntity later to join User and Transaction Tables.
     @Column(name = "userID")
     private Long userId;
 

@@ -1,4 +1,4 @@
-package com.Antra.RestRewards.vo;
+package com.Antra.RestRewards.domain.vo;
 
 import lombok.Data;
 import lombok.Getter;

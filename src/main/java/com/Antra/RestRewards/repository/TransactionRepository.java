@@ -1,6 +1,6 @@
 package com.Antra.RestRewards.repository;
 
-import com.Antra.RestRewards.entity.TransactionEntity;
+import com.Antra.RestRewards.domain.entity.TransactionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

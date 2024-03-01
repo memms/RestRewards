@@ -1,7 +1,7 @@
 package com.Antra.RestRewards.utility;
 
-import com.Antra.RestRewards.entity.TransactionEntity;
-import com.Antra.RestRewards.vo.Transaction;
+import com.Antra.RestRewards.domain.entity.TransactionEntity;
+import com.Antra.RestRewards.domain.vo.Transaction;
 
 public class TransactionUtil {
 
@@ -17,6 +17,9 @@ public class TransactionUtil {
     }
 
     public static Transaction convertFromEntity(TransactionEntity transactionEntity){
+        if(transactionEntity == null){
+            return null;
+        }
         return new Transaction(
                 transactionEntity.getId(),
                 transactionEntity.getUserId(),
