@@ -2,8 +2,6 @@ package com.Antra.RestRewards.controller;
 
 import com.Antra.RestRewards.service.TransactionService;
 import com.Antra.RestRewards.vo.Points;
-//import io.swagger.annotations.Api;
-//import io.swagger.annotations.ApiOperation;
 import com.Antra.RestRewards.vo.Transaction;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/rewards")
-//@Api(value = "Rewards", description = "REST API for Rewards", tags={"Rewards"})
-public class TransactionsController {
+public class RewardsController {
 
     @Autowired
     private TransactionService transactionService;
@@ -23,9 +20,7 @@ public class TransactionsController {
     @Operation(summary = "Get a user's points for the past months. Default is 3 months.")
     @GetMapping("/{userId}")
     public ResponseEntity<Points> getPointsByUserIdPastMonths(@PathVariable("userId") long userId, @RequestParam(required = false, defaultValue = "3") int months) {
-        Points points = new Points(userId, transactionService.getPastMonthsPointsTotalByuserID(userId, months));
-     
-        System.out.println("points: " + points.getPoints());
+        Points points = transactionService.getPastMonthsPointsTotalByuserID(userId, months);
         return new ResponseEntity<>(points, HttpStatus.OK);
     }
 
@@ -34,6 +29,13 @@ public class TransactionsController {
     public ResponseEntity<String> addPointsByUserId(@Validated @RequestBody Transaction transaction) {
         transactionService.addTransaction(transaction);
         return new ResponseEntity<>("OK", HttpStatus.OK);
+    }
+
+    @Operation(summary = "Get all rewards for a user.")
+    @GetMapping("/all/{userId}")
+    public ResponseEntity<Points> getAllPointsByUserId(@PathVariable("userId") long userId) {
+        Points points = transactionService.getAllPointsByUserId(userId);
+        return new ResponseEntity<>(points, HttpStatus.OK);
     }
 
     @ExceptionHandler

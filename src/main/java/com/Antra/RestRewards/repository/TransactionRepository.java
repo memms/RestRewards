@@ -12,4 +12,6 @@ public interface TransactionRepository extends JpaRepository<TransactionEntity, 
 
     List<TransactionEntity> findAllByUserIdAndDateAfterOrderByDateDesc(long uid, LocalDate date);
 
+    List<TransactionEntity> findAllByUserId(long uid);
+
 }
