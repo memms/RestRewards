@@ -1,2 +1,2 @@
 # RestRewards
-Antra Inc Rest API Lab
+Spring Boot Rest API Test
